@@ -1,0 +1,62 @@
+BeerJSON =
+        "ipfs://QmUyPtLpEv1ci4nHsxcGKNCz6K2t8VxRL7L5zCZMovp9E1";
+BeerImage = 
+	"https://ipfs.io/ipfs/QmSE1eTdSdXDPJBDKGdt2qNzuNKL9yv4W5EkCgAgEaTk7w";
+        
+CoffeeJSON =
+        "ipfs://QmUNo3djMSTeuJP5SK1uyMJMQbdgP4C1tNXqv49QJc1psj";
+CoffeeImage = 
+	"https://ipfs.io/ipfs/QmR2J3X7SJLVCVJFZ3YzeN3rYHGDLZibjwwkgcvPUwFf3U";
+WineJSON =
+	"";
+WineImage =
+	"https://ipfs.io/ipfs/QmPjNjeT4HaS1MmMocEAgBvSnTNDiwSe5dZgsXEGxfwPGL";
+
+JuiceJSON = 
+	"";
+JuiceImage = 
+	"https://ipfs.io/ipfs/QmP6uFajcNSAhTefY2PMCLBLbZrDK7wvaHFCnhYJ6N1mEP";
+
+
+RakiaJSON = 
+	"";
+RakiaImage = 
+	"https://ipfs.io/ipfs/QmSgGDN1N8kSGQBL6fp8UhjcDpbZHD67WUXjuRhH8cmXxH";
+
+WiskeyJSON = 
+	"";
+WiskeyImage = 
+	"https://ipfs.io/ipfs/Qmb8JvDZyKBjyPhykxMmKxkT84DsjNG967qA8RoSwk3SAQ";
+
+Specials:
+
+JegermaisterImage =
+	"https://ipfs.io/ipfs/QmUUDW2co3K4hLvs6TXmxPeiGyKBgavgdgajLjoWVFosHu";
+AbsentImage =
+	"https://ipfs.io/ipfs/QmRfWBYXGoUGhQk6tQhDjGd72krqGBYkrxLrgtQgzpa67f";
+LimonceloImage = 
+	"https://ipfs.io/ipfs/QmReTwnEqxFyN9Cxgv6hXGTqRK9MPMRDKb78qPdgYZQJYX";
+
+Cocktails:
+Dirty Martini
+Vodka Gimlet
+Honey Bee
+Rossita
+Champagne Cocktail
+Painkiller
+Gold Rush
+Cosmopolitan
+Tequila Sunrise
+Brain Duster
+Greyhound
+Screwdriver
+Bloody Mary
+Moscow Mule
+Aperol Spritz
+Mojito
+Manhattan
+Margarita
+
+
+
+
