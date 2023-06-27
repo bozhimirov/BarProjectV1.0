@@ -20,8 +20,8 @@ contract DrinkToken is ERC721, ERC721URIStorage, Ownable {
     uint256 tokenId;
     string nameToken;
     string symbolToken;
-    mapping(address => uint256) buyers;
-    mapping (uint256 => address) minted;
+    mapping(address => uint256) public owners;
+    mapping (uint256 => address) public minted;
 
     uint256 _tokenIdCounter;
 
@@ -50,7 +50,7 @@ contract DrinkToken is ERC721, ERC721URIStorage, Ownable {
     
     // Modifier to check if the function caller has been contributor
     modifier notBuyer() {
-        require(buyers[msg.sender] == 0, "already have the item");
+        require(owners[msg.sender] == 0, "already have the item");
         _;
     }
 
@@ -59,12 +59,14 @@ contract DrinkToken is ERC721, ERC721URIStorage, Ownable {
     ///@dev automatic increment of token id, adding token URI upon minting
     ///@param to address to receiver of the token
     function safeMint(address to) external payable notBuyer(){
-        require(msg.value > price - 1);
+        require(msg.value > (price - 1));
         balance += msg.value;
-        buyers[msg.sender] = msg.value;
         tokenId = _tokenIdCounter;
+        owners[msg.sender] = tokenId;
+        minted[tokenId] = msg.sender;
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
+
         _tokenIdCounter++;
     }
 
@@ -80,6 +82,14 @@ contract DrinkToken is ERC721, ERC721URIStorage, Ownable {
         address owner = _ownerOf(Id);
         require(owner != address(0), "ERC721: invalid token ID");
         return owner;
+    }
+    function tokenChangedOwner(uint256 tokenOfMintedNFT) public {
+        require(minted[tokenOfMintedNFT] != address(0x0), "invalid token ID");
+        address currentOwner = ownerOfNFT(tokenOfMintedNFT);
+        owners[msg.sender] = 0;
+        minted[tokenId] = currentOwner;
+        
+
     }
 
     // The following functions are overrides required by Solidity.
@@ -121,10 +131,18 @@ contract DrinkToken is ERC721, ERC721URIStorage, Ownable {
             address(this).balance > 0,
             "no funds"
         );
-        uint256 totalRaised = address(this).balance;
+        uint256 totalFunds = address(this).balance;
         balance = 0;
 
-        (bool success, ) = payable(owner()).call{value: totalRaised}("");
+        (bool success, ) = payable(owner()).call{value: totalFunds}("");
+        require(
+            success,
+            "Address: unable to send value, recepient may have reverted"
+        );
+    }
+
+    function makeDonation() external payable  {
+        (bool success, ) = payable(address(this)).call{value: msg.value}("");
         require(
             success,
             "Address: unable to send value, recepient may have reverted"
